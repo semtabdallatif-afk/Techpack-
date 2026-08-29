@@ -66,32 +66,28 @@
       border-bottom: 1px solid #2d3748;
     }
 
-    /* شبكة المنتجات (Grid Responsive) */
+    /* شبكة المنتجات (2 فالسطر للموبايل) */
     .products-container {
       max-width: 1100px;
       margin: 25px auto;
-      padding: 0 15px;
+      padding: 0 10px;
       display: grid;
-      grid-template-columns: 1fr; /* منتج واحد ف السطر للموبايل */
-      gap: 20px;
-    }
-
-    @media (min-width: 600px) {
-      .products-container {
-        grid-template-columns: repeat(2, 1fr); /* جوج فالسطر للشاشات المتوسطة */
-      }
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
 
     @media (min-width: 992px) {
       .products-container {
-        grid-template-columns: repeat(4, 1fr); /* 4 فالسطر للبيسي */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 0 15px;
       }
     }
 
     .product-card {
       background: #151c28;
-      border-radius: 14px;
-      padding: 15px;
+      border-radius: 12px;
+      padding: 12px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       display: flex;
@@ -107,28 +103,33 @@
     }
     .badge {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 8px;
+      right: 8px;
       background: #ff3b30;
       color: white;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-size: 10px;
       font-weight: bold;
       z-index: 2;
     }
     
-    /* الحاوية ديال الصورة لحفظ الأبعاد وحالة التحميل */
     .img-wrapper {
       width: 100%;
-      height: 180px;
-      background-color: #1e293b; /* Skeleton/Placeholder عند ضعف النت */
-      border-radius: 10px;
-      margin-bottom: 12px;
+      height: 140px;
+      background-color: #1e293b;
+      border-radius: 8px;
+      margin-bottom: 10px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .img-wrapper {
+        height: 180px;
+      }
     }
 
     .product-card img {
@@ -138,27 +139,42 @@
     }
 
     .product-title {
-      font-size: 16px;
+      font-size: 14px;
       color: #fff;
       margin-bottom: 6px;
       font-weight: 600;
+      line-height: 1.3;
     }
+
+    .product-details-list {
+      list-style: none;
+      text-align: right;
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+    .product-details-list li {
+      margin-bottom: 3px;
+    }
+
     .product-price {
-      font-size: 20px;
+      font-size: 17px;
       color: #00d2ff;
       font-weight: bold;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
+
     .shop-btn {
       display: block;
       width: 100%;
-      padding: 12px;
-      font-size: 15px;
+      padding: 10px;
+      font-size: 13px;
       font-weight: bold;
       color: #fff;
       background: linear-gradient(135deg, #0071e3, #00d2ff);
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
       transition: opacity 0.3s;
@@ -167,22 +183,48 @@
       opacity: 0.9;
     }
 
+    /* قسم الثقة والضمان */
+    .trust-section {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      text-align: center;
+    }
+    .trust-card {
+      background: #151c28;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #232d3f;
+    }
+    .trust-card h4 {
+      color: #00d2ff;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+    .trust-card p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
     /* آراء الزبناء */
     .reviews-section {
       max-width: 1100px;
-      margin: 40px auto 20px auto;
+      margin: 30px auto 20px auto;
       padding: 0 15px;
       text-align: center;
     }
     .reviews-section h2 {
-      font-size: 20px;
-      margin-bottom: 20px;
+      font-size: 18px;
+      margin-bottom: 15px;
       color: #fff;
     }
     .reviews-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 15px;
+      gap: 12px;
     }
     @media (min-width: 768px) {
       .reviews-grid {
@@ -191,33 +233,30 @@
     }
     .review-card {
       background: #151c28;
-      padding: 15px;
-      border-radius: 12px;
+      padding: 12px 15px;
+      border-radius: 10px;
       border: 1px solid #232d3f;
       text-align: right;
     }
     .stars {
       color: #f59e0b;
-      margin-bottom: 5px;
-      font-size: 14px;
+      margin-bottom: 4px;
+      font-size: 12px;
     }
     .review-card p {
       color: #cbd5e0;
-      margin-bottom: 8px;
-      font-size: 13.5px;
+      margin-bottom: 6px;
+      font-size: 13px;
     }
     .review-user {
       color: #00d2ff;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
 
     /* استمارة الشراء */
     .checkout-section {
-      padding: 40px 15px;
+      padding: 30px 15px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -226,9 +265,9 @@
     }
     .form-container {
       background: #151c28;
-      padding: 25px 20px;
+      padding: 20px 15px;
       border-radius: 14px;
-      max-width: 480px;
+      max-width: 450px;
       width: 100%;
       border: 1px solid #232d3f;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -237,7 +276,7 @@
       text-align: center;
       margin-bottom: 8px;
       color: #fff;
-      font-size: 20px;
+      font-size: 18px;
     }
     .selected-product-box {
       background: #1e293b;
@@ -246,14 +285,39 @@
       border-radius: 8px;
       text-align: center;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       border: 1px solid #00d2ff;
+      font-size: 13px;
+    }
+
+    /* تفاصيل الفاتورة داخل الاستمارة */
+    .price-summary {
+      background: #0f172a;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 13px;
+      border: 1px dashed #334155;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+      color: #cbd5e1;
+    }
+    .price-row.total {
+      border-top: 1px solid #334155;
+      padding-top: 6px;
+      margin-top: 6px;
+      font-weight: bold;
+      color: #10b981;
       font-size: 14px;
     }
+
     form {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     input {
       padding: 12px;
@@ -261,7 +325,7 @@
       background: #0f172a;
       color: #fff;
       border-radius: 8px;
-      font-size: 15px;
+      font-size: 14px;
       outline: none;
     }
     input:focus {
@@ -273,7 +337,7 @@
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
@@ -281,10 +345,50 @@
       opacity: 0.9;
     }
     #statusMessage {
-      margin-top: 12px;
+      margin-top: 10px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
+    }
+
+    /* زر واتساب العائم */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    /* الفوتر Footer */
+    footer {
+      background: #07090e;
+      border-top: 1px solid #1f293d;
+      padding: 25px 15px;
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -303,9 +407,9 @@
 
   <!-- شريط المميزات -->
   <div class="features-bar">
-    <span>🚚 توصيل لجميع المدن</span>
+    <span>🚚 توصيل مجاني (1-3 أيام)</span>
     <span>🤝 الدفع عند الاستلام</span>
-    <span>✅ ضمان الجودة</span>
+    <span>🔄 ضمان الاستبدال</span>
   </div>
 
   <!-- شبكة المنتجات -->
@@ -318,8 +422,13 @@
         <img src="https://d.top4top.io/p_38935by1o0.png" alt="باك الشحن والاستماع" loading="lazy">
       </div>
       <h3 class="product-title">باك الشحن والاستماع (3 في 1)</h3>
+      <ul class="product-details-list">
+        <li>🔹 شاحن سريع + كابل مقاوم للقطع</li>
+        <li>🔹 سماعة لاسلكية بجودة صوت عالية</li>
+        <li>🔹 ضمان 30 يوم للاستبدال</li>
+      </ul>
       <div class="product-price">179 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
+      <button class="shop-btn" onclick="selectProductAuto('باك الشحن والاستماع (3 في 1)', 179)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 2 -->
@@ -328,8 +437,13 @@
         <img src="https://a.top4top.io/p_3893ojbjn3.png" alt="سماعات لاسلكية Bluetooth" loading="lazy">
       </div>
       <h3 class="product-title">سماعات لاسلكية Bluetooth</h3>
+      <ul class="product-details-list">
+        <li>🔹 بطارية تدوم حتى 5 ساعات</li>
+        <li>🔹 ميكروفون مكالمات نقي</li>
+        <li>🔹 متوافقة مع جميع الهواتف</li>
+      </ul>
       <div class="product-price">139 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
+      <button class="shop-btn" onclick="selectProductAuto('سماعات لاسلكية Bluetooth', 139)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 3 -->
@@ -338,8 +452,13 @@
         <img src="https://l.top4top.io/p_38934hndr2.png" alt="حامل الهاتف للسيارة" loading="lazy">
       </div>
       <h3 class="product-title">حامل الهاتف للسيارة</h3>
+      <ul class="product-details-list">
+        <li>🔹 تثبيت مغناطيسي قوي ومحكم</li>
+        <li>🔹 دوران 360 درجة لمشاهدة مريحة</li>
+        <li>🔹 يناسب جميع أحجام الهواتف</li>
+      </ul>
       <div class="product-price">39 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
+      <button class="shop-btn" onclick="selectProductAuto('حامل الهاتف للسيارة', 39)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 4 -->
@@ -348,11 +467,32 @@
         <img src="https://k.top4top.io/p_3893towo61.png" alt="شاحن متنقل Power Bank" loading="lazy">
       </div>
       <h3 class="product-title">شاحن متنقل 10000mAh</h3>
+      <ul class="product-details-list">
+        <li>🔹 سعة 10000mAh لشحن مرتين</li>
+        <li>🔹 منفذين للشحن السريع</li>
+        <li>🔹 تصميم خفيف ومقاوم للصدمات</li>
+      </ul>
       <div class="product-price">149 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
+      <button class="shop-btn" onclick="selectProductAuto('شاحن متنقل 10000mAh', 149)">🛒 اطلب الآن</button>
     </div>
 
   </div>
+
+  <!-- قسم الثقة والضمان -->
+  <section class="trust-section">
+    <div class="trust-card">
+      <h4>🚚 شحن مجاني وسريع</h4>
+      <p>توصيل لجميع المدن المغربية خلال 1 إلى 3 أيام فقط.</p>
+    </div>
+    <div class="trust-card">
+      <h4>💵 الدفع عند الاستلام</h4>
+      <p>لا تدفع أي درهم حتى تستلم منتجك وتتفحصه بنفسك.</p>
+    </div>
+    <div class="trust-card">
+      <h4>🔄 ضمان الجودة</h4>
+      <p>إمكانية استبدال المنتج في حالة وجود أي عيب مصنعي.</p>
+    </div>
+  </section>
 
   <!-- قسم آراء الزبناء -->
   <section class="reviews-section">
@@ -360,17 +500,17 @@
     <div class="reviews-grid">
       <div class="review-card">
         <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"وصلني الـ Pack فـ 24 ساعة، الجودة ممتازة والشاحن كيشارجي دغيا. شكراً TechPack!"</p>
+        <p>"وصلني الـ Pack فـ 24 ساعة للدار البيضاء، الشحن كان مجاني والجودة ممتازة."</p>
         <div class="review-user">أمين • الدار البيضاء <span style="color:#10b981;">✔️ زبون موثوق</span></div>
       </div>
       <div class="review-card">
         <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"تعامل راقي وتوصيل سريع، السلعة جات كيفما فـ التصاور تماماً."</p>
+        <p>"تعامل راقي فـ الواتساب والتوصيل سريع، السلعة جات كيفما فـ التصاور."</p>
         <div class="review-user">سارة • الرباط <span style="color:#10b981;">✔️ زبونة موثوقة</span></div>
       </div>
       <div class="review-card">
         <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"الثمن مناسب بزاف بالمقارنة مع الجودة، بالتوفيق لكم."</p>
+        <p>"الثمن مناسب بزاف بالمقارنة مع الجودة والدفع كان بعد المعاينة."</p>
         <div class="review-user">حمزة • مراكش <span style="color:#10b981;">✔️ زبون موثوق</span></div>
       </div>
     </div>
@@ -380,14 +520,31 @@
   <section id="checkout" class="checkout-section">
     <div class="form-container">
       <h2>أدخل معلوماتك لإتمام الطلب</h2>
-      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: باك الشحن والاستماع (3 في 1) - 179 DH</div>
+      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: باك الشحن والاستماع (3 في 1)</div>
       
+      <!-- جدول تفاصيل السعر -->
+      <div class="price-summary">
+        <div class="price-row">
+          <span>ثمن المنتج:</span>
+          <span id="productPriceText">179 DH</span>
+        </div>
+        <div class="price-row">
+          <span>مصاريف التوصيل:</span>
+          <span style="color:#10b981; font-weight:bold;">مجاناً (0 DH)</span>
+        </div>
+        <div class="price-row total">
+          <span>المجموع النهائي:</span>
+          <span id="totalPriceText">179 DH</span>
+        </div>
+      </div>
+
       <form id="orderForm">
         <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" minlength="3" required>
         <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" maxlength="10" required>
         <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" minlength="5" required>
         
         <input type="hidden" name="المنتج المطلوب" id="productInput" value="باك الشحن والاستماع (3 في 1) - 179 DH">
+        <input type="hidden" name="المبلغ الإجمالي" id="totalInput" value="179 DH (الشحن مجاني)">
         
         <button type="submit" class="submit-btn" id="submitBtn">تأكيد الشراء الآن</button>
       </form>
@@ -395,6 +552,22 @@
       <div id="statusMessage"></div>
     </div>
   </section>
+
+  <!-- زر واتساب العائم -->
+  <a href="https://wa.me/212600000000?text=%D8%B3%D9%84%D8%A7%D9%85%D9%8F%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D9%8F%D8%8C%20%D8%A8%D8%BA%D9%8A%D8%AA%20%D9%86%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%84%D9%89%20%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20TechPack" class="whatsapp-float" target="_blank">
+    💬 تواصل معنا على WhatsApp
+  </a>
+
+  <!-- الفوتر Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#top">الرئيسية</a>
+      <a href="#checkout">طلب المنتج</a>
+      <a href="#">سياسة الاستبدال والترجيع</a>
+      <a href="#">الشروط والأحكام</a>
+    </div>
+    <p>&copy; 2026 TechPack Store. جميع الحقوق محفوظة.</p>
+  </footer>
 
   <script>
     const formspreeURL = 'https://formspree.io/f/mdeoorqg';
@@ -405,15 +578,15 @@
     const dateStr = today.toLocaleDateString('ar-MA', options);
     document.getElementById('bannerText').innerText = `🔥 عرض حصري: الشحن مجاني لجميع الطلبات اليوم (${dateStr}) فقط!`;
 
-    function selectProductAuto(buttonElement) {
-      const card = buttonElement.closest('.product-card');
-      const title = card.querySelector('.product-title').innerText;
-      const price = card.querySelector('.product-price').innerText;
-      
-      const fullProductString = title + " - " + price;
+    function selectProductAuto(title, price) {
+      const fullProductString = title + " - " + price + " DH";
 
       document.getElementById('productInput').value = fullProductString;
-      document.getElementById('selectedProductText').innerText = "المنتج المحدد: " + fullProductString;
+      document.getElementById('selectedProductText').innerText = "المنتج المحدد: " + title;
+      document.getElementById('productPriceText').innerText = price + " DH";
+      document.getElementById('totalPriceText').innerText = price + " DH";
+      document.getElementById('totalInput').value = price + " DH (الشحن مجاني)";
+      
       document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
     }
 
