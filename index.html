@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechPack Store - متجر الإلكترونيات</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #0b0e14;
+      color: #fff;
+    }
+
+    /* بنر التخفيض */
+    .top-banner {
+      background: #0071e3;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* الهيدر واللوغو */
+    header {
+      background: #121721;
+      text-align: center;
+      padding: 20px 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      border-bottom: 1px solid #1f293d;
+    }
+    .logo-img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #a0aec0;
+      font-size: 15px;
+    }
+
+    /* مميزات المتجر */
+    .features-bar {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: #1a202c;
+      color: #00d2ff;
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid #2d3748;
+    }
+
+    /* شبكة المنتجات */
+    .products-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: #151c28;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      border: 1px solid #232d3f;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff3b30;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+    .product-title {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .product-price {
+      font-size: 22px;
+      color: #00d2ff;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .shop-btn {
+      display: block;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(135deg, #0071e3, #00d2ff);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    .shop-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* آراء الزبناء */
+    .reviews-section {
+      max-width: 1100px;
+      margin: 50px auto 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .reviews-section h2 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: #151c28;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #232d3f;
+      text-align: right;
+    }
+    .review-card p {
+      font-style: italic;
+      color: #cbd5e0;
+      margin-bottom: 10px;
+    }
+    .review-card b {
+      color: #00d2ff;
+      font-size: 14px;
+    }
+
+    /* استمارة الشراء */
+    .checkout-section {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0b0e14;
+      border-top: 1px solid #1f293d;
+    }
+    .form-container {
+      background: #151c28;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid #232d3f;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 22px;
+    }
+    .selected-product-box {
+      background: #1e293b;
+      color: #00d2ff;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border: 1px solid #00d2ff;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input {
+      padding: 14px;
+      border: 1px solid #2d3748;
+      background: #0f172a;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+    input:focus {
+      border-color: #00d2ff;
+    }
+    .submit-btn {
+      padding: 15px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+    #statusMessage {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- بنر التخفيض -->
+  <div class="top-banner">
+    🔥 عرض حصري: الشحن مجاني لجميع الطلبات اليوم فقط!
+  </div>
+
+  <!-- الهيدر واللوغو -->
+  <header id="top">
+    <!-- 📌 ارفع صورة اللوغو فـ top4top وحط الرابط المباشر ديالها هنا -->
+    <img src="حط_رابط_صورة_اللوغو_من_top4top_هنا" alt="TechPack Logo" class="logo-img">
+    <p>أفضل المستلزمات الإلكترونية بأعلى جودة وأنصب الأسعار</p>
+  </header>
+
+  <!-- شريط المميزات -->
+  <div class="features-bar">
+    <span>🚚 توصيل سريع لجميع المدن</span>
+    <span>🤝 الدفع عند الاستلام</span>
+    <span>✅ ضمان الجودة 100%</span>
+  </div>
+
+  <!-- شبكة المنتجات -->
+  <div class="products-container">
+
+    <!-- المنتج 1 -->
+    <div class="product-card">
+      <span class="badge">الأكثر مبيعاً 🔥</span>
+      <img src="حط_رابط_صورة_المنتج_1_هنا" alt="PACK CHARGE & LISTEN">
+      <h3 class="product-title">PACK CHARGE & LISTEN (3 في 1)</h3>
+      <div class="product-price">299 DH</div>
+      <button class="shop-btn" onclick="selectProduct('PACK CHARGE & LISTEN - 299 DH')">تسوق الآن 🛒</button>
+    </div>
+
+    <!-- المنتج 2 -->
+    <div class="product-card">
+      <img src="حط_رابط_صورة_المنتج_2_هنا" alt="Écouteurs Bluetooth">
+      <h3 class="product-title">سماعات لاسلكية Écouteurs Bluetooth</h3>
+      <div class="product-price">149 DH</div>
+      <button class="shop-btn" onclick="selectProduct('Écouteurs Bluetooth - 149 DH')">تسوق الآن 🛒</button>
+    </div>
+
+    <!-- المنتج 3 -->
+    <div class="product-card">
+      <img src="https://a.top4top.io/p_389315shb1.png" alt="Support Voiture">
+      <h3 class="product-title">حامل الهاتف للسيارة Support Voiture</h3>
+      <div class="product-price">79 DH</div>
+      <button class="shop-btn" onclick="selectProduct('Support Voiture - 79 DH')">تسوق الآن 🛒</button>
+    </div>
+
+    <!-- المنتج 4 -->
+    <div class="product-card">
+      <img src="https://l.top4top.io/p_389314rp50.png" alt="Power Bank 10000mAh">
+      <h3 class="product-title">شاحن متنقل Power Bank 10000mAh</h3>
+      <div class="product-price">199 DH</div>
+      <button class="shop-btn" onclick="selectProduct('Power Bank 10000mAh - 199 DH')">تسوق الآن 🛒</button>
+    </div>
+
+  </div>
+
+  <!-- قسم آراء الزبناء -->
+  <section class="reviews-section">
+    <h2>آراء زبنائنا ⭐️⭐️⭐️⭐️⭐️</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p>"وصلني الـ Pack فـ 24 ساعة، الجودة ممتازة والشاحن كيشارجي دغيا. شكراً TechPack!"</p>
+        <b>- أمين من الدار البيضاء</b>
+      </div>
+      <div class="review-card">
+        <p>"تعامل راقي وتوصيل سريع، السلعة جات كيفما فـ التصاور تماماً."</p>
+        <b>- سارة من الرباط</b>
+      </div>
+      <div class="review-card">
+        <p>"الثمن مناسب بزاف بالمقارنة مع الجودة، بالتوفيق لكم."</p>
+        <b>- حمزة من مراكش</b>
+      </div>
+    </div>
+  </section>
+
+  <!-- استمارة الطلب -->
+  <section id="checkout" class="checkout-section">
+    <div class="form-container">
+      <h2>أدخل معلوماتك لإتمام الطلب</h2>
+      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: PACK CHARGE & LISTEN - 299 DH</div>
+      
+      <form id="orderForm">
+        <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" required>
+        <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" required>
+        <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" required>
+        
+        <input type="hidden" name="المنتج المطلوب" id="productInput" value="PACK CHARGE & LISTEN - 299 DH">
+        
+        <button type="submit" class="submit-btn" id="submitBtn">تأكيد الشراء الآن</button>
+      </form>
+
+      <div id="statusMessage"></div>
+    </div>
+  </section>
+
+  <script>
+    const formspreeURL = 'https://formspree.io/f/mdeoorqg';
+
+    function selectProduct(productName) {
+      document.getElementById('productInput').value = productName;
+      document.getElementById('selectedProductText').innerText = "المنتج المحدد: " + productName;
+      document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const form = document.getElementById('orderForm');
+    const statusMessage = document.getElementById('statusMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "⏳ جاري إرسال الطلب...";
+      statusMessage.innerText = "";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(formspreeURL, {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          statusMessage.style.color = "#10b981";
+          statusMessage.innerText = "✅ تم تسجيل طلبك بنجاح! جاري إعادتك للرئيسية...";
+          form.reset();
+
+          setTimeout(() => {
+            window.location.href = "#top";
+            statusMessage.innerText = "";
+            submitBtn.disabled = false;
+            submitBtn.innerText = "تأكيد الشراء الآن";
+          }, 3000);
+
+        } else {
+          throw new Error("خطأ في الإرسال");
+        }
+      } catch (error) {
+        statusMessage.style.color = "#ef4444";
+        statusMessage.innerText = "❌ حدث خطأ أثناء الإرسال، أعد المحاولة.";
+        submitBtn.disabled = false;
+        submitBtn.innerText = "تأكيد الشراء الآن";
+      }
+    });
+  </script>
+
+</body>
+</html>
