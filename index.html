@@ -274,7 +274,7 @@
       <img src="https://j.top4top.io/p_38935fuhm0.png" alt="PACK CHARGE & LISTEN">
       <h3 class="product-title">PACK CHARGE & LISTEN (3 في 1)</h3>
       <div class="product-price">179 DH</div>
-      <button class="shop-btn" onclick="selectProduct('PACK CHARGE & LISTEN - 299 DH')">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
     </div>
 
     <!-- المنتج 2 -->
@@ -282,7 +282,7 @@
       <img src="https://a.top4top.io/p_3893ojbjn3.png" alt="Écouteurs Bluetooth">
       <h3 class="product-title">سماعات لاسلكية Écouteurs Bluetooth</h3>
       <div class="product-price">139 DH</div>
-      <button class="shop-btn" onclick="selectProduct('Écouteurs Bluetooth - 149 DH')">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
     </div>
 
     <!-- المنتج 3 -->
@@ -290,7 +290,7 @@
       <img src="https://l.top4top.io/p_38934hndr2.png" alt="Support Voiture">
       <h3 class="product-title">حامل الهاتف للسيارة Support Voiture</h3>
       <div class="product-price">39 DH</div>
-      <button class="shop-btn" onclick="selectProduct('Support Voiture - 79 DH')">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
     </div>
 
     <!-- المنتج 4 -->
@@ -298,7 +298,7 @@
       <img src="https://k.top4top.io/p_3893towo61.png" alt="Power Bank 10000mAh">
       <h3 class="product-title">شاحن متنقل Power Bank 10000mAh</h3>
       <div class="product-price">149 DH</div>
-      <button class="shop-btn" onclick="selectProduct('Power Bank 10000mAh - 199 DH')">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
     </div>
 
   </div>
@@ -326,14 +326,14 @@
   <section id="checkout" class="checkout-section">
     <div class="form-container">
       <h2>أدخل معلوماتك لإتمام الطلب</h2>
-      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: PACK CHARGE & LISTEN - 299 DH</div>
+      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: PACK CHARGE & LISTEN - 179 DH</div>
       
       <form id="orderForm">
         <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" required>
         <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" required>
         <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" required>
         
-        <input type="hidden" name="المنتج المطلوب" id="productInput" value="PACK CHARGE & LISTEN - 299 DH">
+        <input type="hidden" name="المنتج المطلوب" id="productInput" value="PACK CHARGE & LISTEN - 179 DH">
         
         <button type="submit" class="submit-btn" id="submitBtn">تأكيد الشراء الآن</button>
       </form>
@@ -345,9 +345,16 @@
   <script>
     const formspreeURL = 'https://formspree.io/f/mdeoorqg';
 
-    function selectProduct(productName) {
-      document.getElementById('productInput').value = productName;
-      document.getElementById('selectedProductText').innerText = "المنتج المحدد: " + productName;
+    // دالة أوتوماتيكية تقرأ العنوان والثمن مباشرة من بطاقة المنتج
+    function selectProductAuto(buttonElement) {
+      const card = buttonElement.closest('.product-card');
+      const title = card.querySelector('.product-title').innerText;
+      const price = card.querySelector('.product-price').innerText;
+      
+      const fullProductString = title + " - " + price;
+
+      document.getElementById('productInput').value = fullProductString;
+      document.getElementById('selectedProductText').innerText = "المنتج المحدد: " + fullProductString;
       document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -398,5 +405,5 @@
   </script>
 
 </body>
-</html>
-
+  </html>
+  
