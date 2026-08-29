@@ -39,7 +39,7 @@
     }
     .logo-img {
       width: 100%;
-      max-width: 650px; /* حجم كبير وباين فـ الحاسوب والهاتف */
+      max-width: 650px;
       height: auto;
       margin: 0 auto 10px auto;
       display: block;
@@ -239,7 +239,7 @@
     #statusMessage {
       margin-top: 15px;
       text-align: center;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
     }
   </style>
@@ -253,7 +253,6 @@
 
   <!-- الهيدر واللوغو -->
   <header id="top">
-    <!-- البانر اللوغو الجديد -->
     <img src="https://k.top4top.io/p_3893rhts40.jpg" alt="TechPack Logo" class="logo-img">
     <p>أفضل المستلزمات الإلكترونية بأعلى جودة وأنصب الأسعار</p>
   </header>
@@ -329,9 +328,9 @@
       <div class="selected-product-box" id="selectedProductText">المنتج المحدد: PACK CHARGE & LISTEN - 179 DH</div>
       
       <form id="orderForm">
-        <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" required>
-        <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" required>
-        <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" required>
+        <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" minlength="3" required>
+        <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" maxlength="10" required>
+        <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" minlength="5" required>
         
         <input type="hidden" name="المنتج المطلوب" id="productInput" value="PACK CHARGE & LISTEN - 179 DH">
         
@@ -345,7 +344,6 @@
   <script>
     const formspreeURL = 'https://formspree.io/f/mdeoorqg';
 
-    // دالة أوتوماتيكية تقرأ العنوان والثمن مباشرة من بطاقة المنتج
     function selectProductAuto(buttonElement) {
       const card = buttonElement.closest('.product-card');
       const title = card.querySelector('.product-title').innerText;
@@ -364,6 +362,32 @@
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
+
+      const phoneVal = document.getElementById('phone').value.trim();
+      const nameVal = document.getElementById('fullName').value.trim();
+      const addressVal = document.getElementById('address').value.trim();
+
+      // التحقق من الاسم
+      if (nameVal.length < 3) {
+        statusMessage.style.color = "#ef4444";
+        statusMessage.innerText = "⚠️ المرجو كتابة الاسم الكامل الصحيح (على الأقل 3 حروف).";
+        return;
+      }
+
+      // التحقق الصارم من رقم الهاتف المغربي (05/06/07 + 8 أرقام)
+      const phoneRegex = /^(05|06|07)[0-9]{8}$/;
+      if (!phoneRegex.test(phoneVal)) {
+        statusMessage.style.color = "#ef4444";
+        statusMessage.innerText = "⚠️ رقم الهاتف غير صحيح! اكتب رقم مغربي مكون من 10 أرقام (مثال: 0612345678).";
+        return;
+      }
+
+      // التحقق من العنوان
+      if (addressVal.length < 5) {
+        statusMessage.style.color = "#ef4444";
+        statusMessage.innerText = "⚠️ المرجو كتابة العنوان والمدينة بشكل واضح.";
+        return;
+      }
 
       submitBtn.disabled = true;
       submitBtn.innerText = "⏳ جاري إرسال الطلب...";
