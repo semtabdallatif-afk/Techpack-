@@ -19,13 +19,13 @@
       color: #fff;
     }
 
-    /* بنر التخفيض */
+    /* بنر التخفيض الديناميكي */
     .top-banner {
       background: #0071e3;
       color: white;
       text-align: center;
-      padding: 10px;
-      font-size: 14px;
+      padding: 8px 10px;
+      font-size: 13px;
       font-weight: bold;
     }
 
@@ -33,52 +33,65 @@
     header {
       background: #121721;
       text-align: center;
-      padding: 15px 10px;
+      padding: 15px 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
       border-bottom: 1px solid #1f293d;
     }
     .logo-img {
       width: 100%;
-      max-width: 650px;
+      max-width: 320px;
       height: auto;
-      margin: 0 auto 10px auto;
+      margin: 0 auto 8px auto;
       display: block;
       border-radius: 8px;
     }
     header p {
-      color: #a0aec0;
-      font-size: 15px;
+      color: #38bdf8;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     /* مميزات المتجر */
     .features-bar {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 15px;
       flex-wrap: wrap;
       background: #1a202c;
       color: #00d2ff;
-      padding: 12px 10px;
+      padding: 10px 10px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       border-bottom: 1px solid #2d3748;
     }
 
-    /* شبكة المنتجات */
+    /* شبكة المنتجات (Grid Responsive) */
     .products-container {
       max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 25px auto;
+      padding: 0 15px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+      grid-template-columns: 1fr; /* منتج واحد ف السطر للموبايل */
+      gap: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .products-container {
+        grid-template-columns: repeat(2, 1fr); /* جوج فالسطر للشاشات المتوسطة */
+      }
+    }
+
+    @media (min-width: 992px) {
+      .products-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 فالسطر للبيسي */
+      }
     }
 
     .product-card {
       background: #151c28;
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 15px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       display: flex;
@@ -89,8 +102,8 @@
       border: 1px solid #232d3f;
     }
     .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 212, 255, 0.2);
     }
     .badge {
       position: absolute;
@@ -98,38 +111,54 @@
       right: 10px;
       background: #ff3b30;
       color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
       font-weight: bold;
+      z-index: 2;
     }
+    
+    /* الحاوية ديال الصورة لحفظ الأبعاد وحالة التحميل */
+    .img-wrapper {
+      width: 100%;
+      height: 180px;
+      background-color: #1e293b; /* Skeleton/Placeholder عند ضعف النت */
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .product-card img {
       width: 100%;
-      height: 200px;
+      height: 100%;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
     }
+
     .product-title {
-      font-size: 18px;
+      font-size: 16px;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      font-weight: 600;
     }
     .product-price {
-      font-size: 22px;
+      font-size: 20px;
       color: #00d2ff;
       font-weight: bold;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
     .shop-btn {
       display: block;
-      padding: 12px 20px;
-      font-size: 16px;
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
       font-weight: bold;
       color: #fff;
       background: linear-gradient(135deg, #0071e3, #00d2ff);
       border: none;
-      border-radius: 25px;
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       transition: opacity 0.3s;
@@ -141,40 +170,54 @@
     /* آراء الزبناء */
     .reviews-section {
       max-width: 1100px;
-      margin: 50px auto 30px auto;
-      padding: 0 20px;
+      margin: 40px auto 20px auto;
+      padding: 0 15px;
       text-align: center;
     }
     .reviews-section h2 {
-      font-size: 24px;
-      margin-bottom: 25px;
+      font-size: 20px;
+      margin-bottom: 20px;
       color: #fff;
     }
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    @media (min-width: 768px) {
+      .reviews-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     .review-card {
       background: #151c28;
-      padding: 20px;
+      padding: 15px;
       border-radius: 12px;
       border: 1px solid #232d3f;
       text-align: right;
     }
-    .review-card p {
-      font-style: italic;
-      color: #cbd5e0;
-      margin-bottom: 10px;
-    }
-    .review-card b {
-      color: #00d2ff;
+    .stars {
+      color: #f59e0b;
+      margin-bottom: 5px;
       font-size: 14px;
+    }
+    .review-card p {
+      color: #cbd5e0;
+      margin-bottom: 8px;
+      font-size: 13.5px;
+    }
+    .review-user {
+      color: #00d2ff;
+      font-size: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* استمارة الشراء */
     .checkout-section {
-      padding: 60px 20px;
+      padding: 40px 15px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -183,18 +226,18 @@
     }
     .form-container {
       background: #151c28;
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 500px;
+      padding: 25px 20px;
+      border-radius: 14px;
+      max-width: 480px;
       width: 100%;
       border: 1px solid #232d3f;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .form-container h2 {
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: #fff;
-      font-size: 22px;
+      font-size: 20px;
     }
     .selected-product-box {
       background: #1e293b;
@@ -203,33 +246,34 @@
       border-radius: 8px;
       text-align: center;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border: 1px solid #00d2ff;
+      font-size: 14px;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
     }
     input {
-      padding: 14px;
+      padding: 12px;
       border: 1px solid #2d3748;
       background: #0f172a;
       color: #fff;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 15px;
       outline: none;
     }
     input:focus {
       border-color: #00d2ff;
     }
     .submit-btn {
-      padding: 15px;
+      padding: 14px;
       background: linear-gradient(135deg, #10b981, #059669);
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
     }
@@ -237,31 +281,31 @@
       opacity: 0.9;
     }
     #statusMessage {
-      margin-top: 15px;
+      margin-top: 12px;
       text-align: center;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <!-- بنر التخفيض -->
-  <div class="top-banner">
+  <!-- بنر التخفيض Dynamic -->
+  <div class="top-banner" id="bannerText">
     🔥 عرض حصري: الشحن مجاني لجميع الطلبات اليوم فقط!
   </div>
 
   <!-- الهيدر واللوغو -->
   <header id="top">
     <img src="https://k.top4top.io/p_3893rhts40.jpg" alt="TechPack Logo" class="logo-img">
-    <p>أفضل المستلزمات الإلكترونية بأعلى جودة وأنصب الأسعار</p>
+    <p>إكسسوارات تقنية بأعلى جودة وأفضل الأسعار</p>
   </header>
 
   <!-- شريط المميزات -->
   <div class="features-bar">
-    <span>🚚 توصيل سريع لجميع المدن</span>
+    <span>🚚 توصيل لجميع المدن</span>
     <span>🤝 الدفع عند الاستلام</span>
-    <span>✅ ضمان الجودة 100%</span>
+    <span>✅ ضمان الجودة</span>
   </div>
 
   <!-- شبكة المنتجات -->
@@ -270,34 +314,42 @@
     <!-- المنتج 1 -->
     <div class="product-card">
       <span class="badge">الأكثر مبيعاً 🔥</span>
-      <img src="https://d.top4top.io/p_38935by1o0.png" alt="PACK CHARGE & LISTEN">
-      <h3 class="product-title">PACK CHARGE & LISTEN (3 في 1)</h3>
+      <div class="img-wrapper">
+        <img src="https://d.top4top.io/p_38935by1o0.png" alt="باك الشحن والاستماع" loading="lazy">
+      </div>
+      <h3 class="product-title">باك الشحن والاستماع (3 في 1)</h3>
       <div class="product-price">179 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 2 -->
     <div class="product-card">
-      <img src="https://a.top4top.io/p_3893ojbjn3.png" alt="Écouteurs Bluetooth">
-      <h3 class="product-title">سماعات لاسلكية Écouteurs Bluetooth</h3>
+      <div class="img-wrapper">
+        <img src="https://a.top4top.io/p_3893ojbjn3.png" alt="سماعات لاسلكية Bluetooth" loading="lazy">
+      </div>
+      <h3 class="product-title">سماعات لاسلكية Bluetooth</h3>
       <div class="product-price">139 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 3 -->
     <div class="product-card">
-      <img src="https://l.top4top.io/p_38934hndr2.png" alt="Support Voiture">
-      <h3 class="product-title">حامل الهاتف للسيارة Support Voiture</h3>
+      <div class="img-wrapper">
+        <img src="https://l.top4top.io/p_38934hndr2.png" alt="حامل الهاتف للسيارة" loading="lazy">
+      </div>
+      <h3 class="product-title">حامل الهاتف للسيارة</h3>
       <div class="product-price">39 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
     </div>
 
     <!-- المنتج 4 -->
     <div class="product-card">
-      <img src="https://k.top4top.io/p_3893towo61.png" alt="Power Bank 10000mAh">
-      <h3 class="product-title">شاحن متنقل Power Bank 10000mAh</h3>
+      <div class="img-wrapper">
+        <img src="https://k.top4top.io/p_3893towo61.png" alt="شاحن متنقل Power Bank" loading="lazy">
+      </div>
+      <h3 class="product-title">شاحن متنقل 10000mAh</h3>
       <div class="product-price">149 DH</div>
-      <button class="shop-btn" onclick="selectProductAuto(this)">تسوق الآن 🛒</button>
+      <button class="shop-btn" onclick="selectProductAuto(this)">🛒 اطلب الآن</button>
     </div>
 
   </div>
@@ -307,16 +359,19 @@
     <h2>آراء زبنائنا ⭐️⭐️⭐️⭐️⭐️</h2>
     <div class="reviews-grid">
       <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
         <p>"وصلني الـ Pack فـ 24 ساعة، الجودة ممتازة والشاحن كيشارجي دغيا. شكراً TechPack!"</p>
-        <b>- أمين من الدار البيضاء</b>
+        <div class="review-user">أمين • الدار البيضاء <span style="color:#10b981;">✔️ زبون موثوق</span></div>
       </div>
       <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
         <p>"تعامل راقي وتوصيل سريع، السلعة جات كيفما فـ التصاور تماماً."</p>
-        <b>- سارة من الرباط</b>
+        <div class="review-user">سارة • الرباط <span style="color:#10b981;">✔️ زبونة موثوقة</span></div>
       </div>
       <div class="review-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
         <p>"الثمن مناسب بزاف بالمقارنة مع الجودة، بالتوفيق لكم."</p>
-        <b>- حمزة من مراكش</b>
+        <div class="review-user">حمزة • مراكش <span style="color:#10b981;">✔️ زبون موثوق</span></div>
       </div>
     </div>
   </section>
@@ -325,14 +380,14 @@
   <section id="checkout" class="checkout-section">
     <div class="form-container">
       <h2>أدخل معلوماتك لإتمام الطلب</h2>
-      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: PACK CHARGE & LISTEN - 179 DH</div>
+      <div class="selected-product-box" id="selectedProductText">المنتج المحدد: باك الشحن والاستماع (3 في 1) - 179 DH</div>
       
       <form id="orderForm">
         <input type="text" name="الاسم الكامل" id="fullName" placeholder="الاسم الكامل" minlength="3" required>
         <input type="tel" name="رقم الهاتف" id="phone" placeholder="رقم الهاتف (مثال: 0612345678)" maxlength="10" required>
         <input type="text" name="العنوان والمدينة" id="address" placeholder="المدينة والعنوان الكامل" minlength="5" required>
         
-        <input type="hidden" name="المنتج المطلوب" id="productInput" value="PACK CHARGE & LISTEN - 179 DH">
+        <input type="hidden" name="المنتج المطلوب" id="productInput" value="باك الشحن والاستماع (3 في 1) - 179 DH">
         
         <button type="submit" class="submit-btn" id="submitBtn">تأكيد الشراء الآن</button>
       </form>
@@ -343,6 +398,12 @@
 
   <script>
     const formspreeURL = 'https://formspree.io/f/mdeoorqg';
+
+    // تحديث تاريخ العرض التلقائي
+    const today = new Date();
+    const options = { day: 'numeric', month: 'long' };
+    const dateStr = today.toLocaleDateString('ar-MA', options);
+    document.getElementById('bannerText').innerText = `🔥 عرض حصري: الشحن مجاني لجميع الطلبات اليوم (${dateStr}) فقط!`;
 
     function selectProductAuto(buttonElement) {
       const card = buttonElement.closest('.product-card');
@@ -367,14 +428,12 @@
       const nameVal = document.getElementById('fullName').value.trim();
       const addressVal = document.getElementById('address').value.trim();
 
-      // التحقق من الاسم
       if (nameVal.length < 3) {
         statusMessage.style.color = "#ef4444";
         statusMessage.innerText = "⚠️ المرجو كتابة الاسم الكامل الصحيح (على الأقل 3 حروف).";
         return;
       }
 
-      // التحقق الصارم من رقم الهاتف المغربي (05/06/07 + 8 أرقام)
       const phoneRegex = /^(05|06|07)[0-9]{8}$/;
       if (!phoneRegex.test(phoneVal)) {
         statusMessage.style.color = "#ef4444";
@@ -382,7 +441,6 @@
         return;
       }
 
-      // التحقق من العنوان
       if (addressVal.length < 5) {
         statusMessage.style.color = "#ef4444";
         statusMessage.innerText = "⚠️ المرجو كتابة العنوان والمدينة بشكل واضح.";
